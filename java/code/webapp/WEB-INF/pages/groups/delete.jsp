@@ -5,7 +5,9 @@
 
 <html>
 <body>
-<%@ include file="/WEB-INF/pages/common/fragments/groups/header.jspf" %>
+    <jsp:include page="/WEB-INF/pages/common/fragments/groups/header.jspf">
+        <jsp:param name="delete" value="yes"/>
+    </jsp:include>
 
     <h2>
     <bean:message key="systemgroup.delete.title"/>

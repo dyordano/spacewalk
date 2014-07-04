@@ -6,22 +6,28 @@
 
 
 <div class="spacewalk-toolbar-h1">
-	<div class="spacewalk-toolbar">
-		<span class="spacewalk-toolbar">
-			<a href="/rhn/systems/WorkWithGroup.do?sgid=${systemgroup.id}">
-			<rhn:icon type="header-system-groups" title="toolbar.work.with.group" />
-     			<bean:message key="toolbar.work.with.group"/>
-     		</a>
-                        <a href="/rhn/groups/Delete.do?sgid=${systemgroup.id}">
-				<rhn:icon type="item-del" title="toolbar.delete.systemgroup" />
-				<bean:message key="toolbar.delete.systemgroup"/>
-			</a>
 
-		</span>
-	</div>
+        <c:if test="${empty delete}">
+       	       <div class="spacewalk-toolbar">
+                       <span class="spacewalk-toolbar">
+				<a href="/rhn/systems/WorkWithGroup.do?sgid=${systemgroup.id}">
+				<rhn:icon type="header-system-groups" title="toolbar.work.with.group" />
+	     			<bean:message key="toolbar.work.with.group"/>
+	     		</a>
+		                <a href="/rhn/groups/Delete.do?sgid=${systemgroup.id}">
+					<rhn:icon type="item-del" title="toolbar.delete.systemgroup" />
+					<bean:message key="toolbar.delete.systemgroup"/>
+				</a>
+
+			</span>
+		</div>
+        </c:if>
+
         <h1>
 
-        <rhn:icon type="header-system-groups" title="system.common.groupAlt" />
+        <c:if test="${empty delete}">
+                <rhn:icon type="header-system-groups" title="system.common.groupAlt" />
+        </c:if>
 
 	<c:if test="${empty systemgroup}">
 		<decorator:getProperty property="meta.name" />
